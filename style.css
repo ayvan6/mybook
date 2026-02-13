@@ -5,13 +5,13 @@ font-family:'Merriweather', serif;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
-overflow:hidden;
+min-height:100vh;     /* changed from height */
+overflow-x:hidden;    /* allow vertical scroll */
 }
 
 /* PASSWORD */
 #password-screen{
-position:absolute;
+position:fixed;
 width:100%;
 height:100%;
 display:flex;
@@ -27,19 +27,22 @@ padding:30px;
 border-radius:12px;
 text-align:center;
 box-shadow:0 0 30px rgba(0,0,0,0.8);
+width:90%;
+max-width:350px;
 }
 
 input,button{
 padding:12px;
-font-size:18px;
+font-size:16px;
 margin-top:10px;
+width:100%;
 }
 
 /* BOOK AREA */
 #book-area{
 position:relative;
 width:min(92vw, 500px);
-aspect-ratio: 2 / 3;
+min-height:80vh;        /* allow flexible height */
 }
 
 /* HIDDEN */
@@ -74,7 +77,7 @@ animation:flicker 2.5s infinite alternate;
 .page{
 position:absolute;
 width:100%;
-height:100%;
+min-height:100%;
 background:url("images/paper-light.png");
 background-size:cover;
 background-position:center;
@@ -86,12 +89,15 @@ inset 0 0 40px rgba(0,0,0,0.4);
 display:none;
 z-index:1;
 border-radius:12px;
+
+/* 🔥 THIS FIXES YOUR ISSUE */
+overflow-y:auto;
 }
 
-/* COVER PAGE FIX */
+/* COVER PAGE */
 .cover-page{
 background-image:url("images/cover.png");
-background-size:contain; /* IMPORTANT FIX */
+background-size:contain;
 background-position:center;
 background-repeat:no-repeat;
 background-color:#1a0f0a;
@@ -107,19 +113,20 @@ cursor:pointer;
 /* TEXT */
 h2{
 font-family:'Cinzel', serif;
-font-size:clamp(24px, 5vw, 36px);
+font-size:clamp(22px, 5vw, 34px);
 color:#3b1d0e;
 margin-bottom:20px;
 text-align:center;
 }
 
 p{
-font-size:clamp(16px, 3.8vw, 22px);
+font-size:clamp(15px, 4vw, 20px);
 color:#2c1a0f;
 line-height:1.8;
 background:rgba(255,255,255,0.75);
-padding:20px;
+padding:18px;
 border-radius:10px;
+word-wrap:break-word;
 }
 
 /* BUTTONS */
@@ -135,8 +142,8 @@ button{
 background:#6b341f;
 color:white;
 border:none;
-padding:12px 25px;
-font-size:18px;
+padding:10px 20px;
+font-size:16px;
 cursor:pointer;
 border-radius:6px;
 }
@@ -166,6 +173,11 @@ width:95vw;
 
 .controls{
 bottom:-50px;
+}
+
+p{
+font-size:16px;
+padding:15px;
 }
 
 }
