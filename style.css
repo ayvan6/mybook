@@ -1,6 +1,6 @@
 body{
 margin:0;
-background:#1a0f0a;
+background:#140b07;
 font-family:'Merriweather', serif;
 display:flex;
 justify-content:center;
@@ -18,14 +18,15 @@ display:flex;
 justify-content:center;
 align-items:center;
 background:black;
+z-index:100;
 }
 
 .lock-box{
-background:#fff8e7;
-padding:40px;
+background:#fff3dc;
+padding:30px;
 border-radius:12px;
 text-align:center;
-box-shadow:0 0 25px black;
+box-shadow:0 0 30px rgba(0,0,0,0.8);
 }
 
 input,button{
@@ -37,30 +38,35 @@ margin-top:10px;
 /* BOOK AREA */
 #book-area{
 position:relative;
-width:90vw;
-max-width:700px;
-height:85vh;
-max-height:750px;
+width:min(92vw, 500px);
+aspect-ratio: 2 / 3;
 }
 
-.hidden{ display:none; }
+/* HIDDEN */
+.hidden{
+display:none;
+}
 
 /* CANDLE GLOW */
 .candle-glow{
 position:absolute;
 top:50%;
 left:50%;
-width:800px;
-height:800px;
-background:radial-gradient(circle, rgba(255,200,120,0.35) 0%, rgba(0,0,0,0.9) 70%);
+width:140%;
+height:140%;
+background:
+radial-gradient(circle,
+rgba(255,200,120,0.35) 0%,
+rgba(255,150,80,0.15) 20%,
+rgba(0,0,0,0.95) 70%);
 transform:translate(-50%,-50%);
 z-index:0;
 pointer-events:none;
-animation:flicker 2s infinite alternate;
+animation:flicker 2.5s infinite alternate;
 }
 
 @keyframes flicker{
-0%{opacity:0.9;}
+0%{opacity:0.85;}
 100%{opacity:1;}
 }
 
@@ -71,18 +77,24 @@ width:100%;
 height:100%;
 background:url("images/paper-light.png");
 background-size:cover;
-padding:60px;
+background-position:center;
+padding:clamp(20px, 5vw, 50px);
 box-sizing:border-box;
-box-shadow:0 0 50px black;
+box-shadow:
+0 0 60px rgba(0,0,0,0.9),
+inset 0 0 40px rgba(0,0,0,0.4);
 display:none;
 z-index:1;
-border-radius:8px;
+border-radius:12px;
 }
 
-/* COVER */
+/* COVER PAGE FIX */
 .cover-page{
-background:url("images/cover.png");
-background-size:contain;
+background-image:url("images/cover.png");
+background-size:contain; /* IMPORTANT FIX */
+background-position:center;
+background-repeat:no-repeat;
+background-color:#1a0f0a;
 color:gold;
 display:flex;
 flex-direction:column;
@@ -92,24 +104,25 @@ text-align:center;
 cursor:pointer;
 }
 
-/* TEXT STYLING */
+/* TEXT */
 h2{
 font-family:'Cinzel', serif;
-font-size:36px;
+font-size:clamp(24px, 5vw, 36px);
 color:#3b1d0e;
-margin-bottom:25px;
+margin-bottom:20px;
+text-align:center;
 }
 
 p{
-font-size:22px;
+font-size:clamp(16px, 3.8vw, 22px);
 color:#2c1a0f;
 line-height:1.8;
-background:rgba(255,255,255,0.6);
+background:rgba(255,255,255,0.75);
 padding:20px;
-border-radius:8px;
+border-radius:10px;
 }
 
-/* CONTROLS */
+/* BUTTONS */
 .controls{
 position:absolute;
 bottom:-60px;
@@ -119,23 +132,23 @@ justify-content:space-between;
 }
 
 button{
-background:#5b2c1d;
+background:#6b341f;
 color:white;
 border:none;
 padding:12px 25px;
 font-size:18px;
 cursor:pointer;
-border-radius:5px;
+border-radius:6px;
 }
 
 /* SLIDE ANIMATION */
 .slide-in{
-animation:slideIn 0.6s ease forwards;
+animation:slideIn 0.5s ease;
 }
 
 @keyframes slideIn{
 from{
-transform:translateX(100%);
+transform:translateX(60px);
 opacity:0;
 }
 to{
@@ -145,12 +158,14 @@ opacity:1;
 }
 
 /* MOBILE */
-@media(max-width:768px){
-.page{
-padding:30px;
-}
-p{
-font-size:18px;
-}
+@media(max-width:600px){
+
+#book-area{
+width:95vw;
 }
 
+.controls{
+bottom:-50px;
+}
+
+}
