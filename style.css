@@ -82,7 +82,7 @@ border-radius:8px;
 /* COVER */
 .cover-page{
 background:url("images/cover.png");
-background-size:cover;
+background-size:contain;
 color:gold;
 display:flex;
 flex-direction:column;
@@ -153,3 +153,4 @@ p{
 font-size:18px;
 }
 }
+
