@@ -5,8 +5,8 @@ font-family:'Merriweather', serif;
 display:flex;
 justify-content:center;
 align-items:center;
-min-height:100vh;     /* changed from height */
-overflow-x:hidden;    /* allow vertical scroll */
+min-height:100vh;
+overflow-x:hidden;
 }
 
 /* PASSWORD */
@@ -42,7 +42,7 @@ width:100%;
 #book-area{
 position:relative;
 width:min(92vw, 500px);
-min-height:80vh;        /* allow flexible height */
+height:85vh;
 }
 
 /* HIDDEN */
@@ -77,11 +77,12 @@ animation:flicker 2.5s infinite alternate;
 .page{
 position:absolute;
 width:100%;
-min-height:100%;
+height:100%;
 background:url("images/paper-light.png");
 background-size:cover;
 background-position:center;
-padding:clamp(20px, 5vw, 50px);
+padding:30px;
+padding-bottom:90px; /* space for buttons */
 box-sizing:border-box;
 box-shadow:
 0 0 60px rgba(0,0,0,0.9),
@@ -89,8 +90,6 @@ inset 0 0 40px rgba(0,0,0,0.4);
 display:none;
 z-index:1;
 border-radius:12px;
-
-/* 🔥 THIS FIXES YOUR ISSUE */
 overflow-y:auto;
 }
 
@@ -113,14 +112,14 @@ cursor:pointer;
 /* TEXT */
 h2{
 font-family:'Cinzel', serif;
-font-size:clamp(22px, 5vw, 34px);
+font-size:28px;
 color:#3b1d0e;
 margin-bottom:20px;
 text-align:center;
 }
 
 p{
-font-size:clamp(15px, 4vw, 20px);
+font-size:18px;
 color:#2c1a0f;
 line-height:1.8;
 background:rgba(255,255,255,0.75);
@@ -132,10 +131,14 @@ word-wrap:break-word;
 /* BUTTONS */
 .controls{
 position:absolute;
-bottom:-60px;
+bottom:15px;
+left:0;
 width:100%;
 display:flex;
 justify-content:space-between;
+padding:0 20px;
+box-sizing:border-box;
+z-index:5;
 }
 
 button{
@@ -148,14 +151,14 @@ cursor:pointer;
 border-radius:6px;
 }
 
-/* SLIDE ANIMATION */
+/* SLIDE */
 .slide-in{
-animation:slideIn 0.5s ease;
+animation:slideIn 0.4s ease;
 }
 
 @keyframes slideIn{
 from{
-transform:translateX(60px);
+transform:translateX(40px);
 opacity:0;
 }
 to{
@@ -169,15 +172,11 @@ opacity:1;
 
 #book-area{
 width:95vw;
-}
-
-.controls{
-bottom:-50px;
+height:90vh;
 }
 
 p{
 font-size:16px;
-padding:15px;
 }
 
 }
